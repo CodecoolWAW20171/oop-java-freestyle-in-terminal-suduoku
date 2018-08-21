@@ -1,3 +1,5 @@
+package com.codecool.termlib;
+
 public class Field {
     private int userValue;
     private int correctValue;
@@ -55,8 +57,8 @@ public class Field {
         this.editable = editable;
     }
 
-    public Field(int value, int row, int column, boolean visibility, boolean editable) {
-        this.userValue = 0;
+    public Field(int correctValue, int userValue, int row, int column, boolean visibility, boolean editable) {
+        this.userValue = userValue;
         this.correctValue = correctValue;
         this.row = row;
         this.column = column;
