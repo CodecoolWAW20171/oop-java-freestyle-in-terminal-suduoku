@@ -9,7 +9,6 @@ import com.google.gson.GsonBuilder;
 
 public class FileReader {
     public static Gson gson = new GsonBuilder().create();
-
     public static LinkedList<int[][][]> readFile(String fileName){
         LinkedList<int[][][]> listOfBoards = new LinkedList<>();
         try{

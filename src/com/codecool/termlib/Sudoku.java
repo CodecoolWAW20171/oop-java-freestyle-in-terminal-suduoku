@@ -12,8 +12,13 @@ public class Sudoku {
     public static void main (String [] args){
         // display board
 
+        String difficulty = UI.selectDifficulty();
 
-        LinkedList<int[][][]> listOfBoards = FileReader.readFile("easy.txt");
+        // wydruk kontrolny:
+        System.out.println("Difficulty set to " + difficulty);
+        System.out.println(" ");
+
+        LinkedList<int[][][]> listOfBoards = FileReader.readFile(difficulty+".txt");
 
         int randomNumber = Utils.getRandomNumber(listOfBoards.size());
         int [][][] randomBoardSet = Utils.getRandomBoardSet(listOfBoards,randomNumber);
@@ -23,7 +28,6 @@ public class Sudoku {
         Field[][] board;
         board = BoardGenerator.generateBoardOutOfChosenSet(completedBoard, emptyBoard);
         DisplayBoard.displayGameBoard(board);
-
 
 //
 //        for (int[] elem : emptyBoard){
