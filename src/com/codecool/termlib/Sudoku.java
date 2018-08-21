@@ -1,34 +1,37 @@
 package com.codecool.termlib;
+import java.lang.reflect.Array;
 import java.util.Arrays;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import java.util.LinkedList;
+
 
 public class Sudoku {
     public static void main (String [] args){
-        Gson gson = new GsonBuilder().create();
-
-        int[][] board = new int[][] {
-                {1,2,3,4,5,6,7,8,9},
-                {1,2,3,4,5,6,7,8,9},
-                {1,2,3,4,5,6,7,8,9},
-                {1,2,3,4,5,6,7,8,9},
-                {1,2,3,4,5,6,7,8,9},
-                {1,2,3,4,5,6,7,8,9},
-                {1,2,3,4,5,6,7,8,9},
-                {1,2,3,4,5,6,7,8,9},
-                {1,2,3,4,5,6,7,8,9}
-        };
-
         // display board
-        for (int[] element : board){
-            System.out.println(Arrays.toString(element));
-            System.out.println();
+
+
+        LinkedList<int[][][]> listOfBoards = FileReader.readFile("easy.txt");
+        int randomNumber = Utils.getRandomNumber(listOfBoards.size());
+        int [][][] randomBoardSet = Utils.getRandomBoardSet(listOfBoards,randomNumber);
+        int [][] emptyBoard = Utils.getEmptyBoard(randomBoardSet);
+        int [][] completedBoard = Utils.getCompletedBoard(randomBoardSet);
+
+        for (int[] elem : emptyBoard){
+            System.out.println(Arrays.toString(elem));
         }
+
+        System.out.println(" ");
+
+        for (int[] elem : completedBoard){
+            System.out.println(Arrays.toString(elem));
+        }
+
 
         // JSON to 2d array
         //int[][] intArray2 = gson.fromJson("[[1,2,3],[4,5,6]]", int[][].class);
 
         // 2d array to JSON
-        System.out.println(gson.toJson(board));
+        //System.out.println(gson.toJson(board));
     }
+
+
 }

@@ -1,3 +1,5 @@
+package com.codecool.termlib;
+
 public class Field {
     private int userValue;
     private int correctValue;
