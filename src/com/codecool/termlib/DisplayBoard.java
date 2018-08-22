@@ -3,10 +3,12 @@ import java.util.Arrays;
 
 public class DisplayBoard {
 
-    static String upperFrame = "┌---┬---┬---┬---┬---┬---┬---┬---┬---┐";
+    static String upperFrame = "┌---┬---┬---╥---┬---┬---╥---┬---┬---┐";
     static String verticalLine = " │ ";
-    static String middleFrame = "├---┼---┼---┼---┼---┼---┼---┼---┼---┤";
-    static String downFrame= "└---┴---┴---┴---┴---┴---┴---┴---┴---┘";
+    static String doubleVerticalLine = " ║ ";
+    static String middleFrame = "├---┼---┼---╫---┼---┼---╫---┼---┼---┤";
+    static String boldMiddlaFrame = "╞═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╡";
+    static String downFrame= "└---┴---┴---╨---┴---┴---╨---┴---┴---┘";
     static String[][] boardToDisplay = new String[9][9];
 
     public static void displayGameBoard(Field[][] board){
@@ -18,6 +20,10 @@ public class DisplayBoard {
                 } else {
                     boardToDisplay[i][j] = Integer.toString(board[i][j].getUserValue());
                 }
+
+                if(board[i][j].isEditable() == false ){
+                    boardToDisplay[i][j] = "\033[31;1m" + boardToDisplay[i][j] + "\033[0m";
+                }
             }
         }
 
@@ -25,17 +31,34 @@ public class DisplayBoard {
         for (int i =0; i < 8; i++) {
             System.out.print("│ ");
             for (int j = 0; j < 9; j++) {
-                System.out.print(boardToDisplay[i][j]);
-                System.out.print(verticalLine);
+                if (j % 3 == 2 && j != 8) {
+                    System.out.print(boardToDisplay[i][j]);
+                    System.out.print(doubleVerticalLine);
+
+                } else {
+                    System.out.print(boardToDisplay[i][j]);
+                    System.out.print(verticalLine);
+                }
             }
             System.out.println(" ");
-            System.out.println(middleFrame);
+            if (i % 3 == 2) {
+                System.out.println(boldMiddlaFrame);
+            } else {
+                System.out.println(middleFrame);
+            }
         }
+
         int i = 8;
         System.out.print("│ ");
         for (int j = 0; j < 9; j++) {
-            System.out.print(boardToDisplay[i][j]);
-            System.out.print(verticalLine);
+            if (j%3 == 2 && j != 8){
+                System.out.print(boardToDisplay[i][j]);
+                System.out.print(doubleVerticalLine);
+
+            } else {
+                System.out.print(boardToDisplay[i][j]);
+                System.out.print(verticalLine);
+            }
         }
         System.out.println(" ");
         System.out.println(downFrame);
