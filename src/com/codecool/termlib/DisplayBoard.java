@@ -3,12 +3,12 @@ import java.util.Arrays;
 
 public class DisplayBoard {
 
-    static String upperFrame = "┌---┬---┬---╥---┬---┬---╥---┬---┬---┐";
+    static String upperFrame = "┌───┬───┬───╥───┬───┬───╥───┬───┬───┐";
     static String verticalLine = " │ ";
     static String doubleVerticalLine = " ║ ";
-    static String middleFrame = "├---┼---┼---╫---┼---┼---╫---┼---┼---┤";
+    static String middleFrame = "├───┼───┼───╫───┼───┼───╫───┼───┼───┤";
     static String boldMiddlaFrame = "╞═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╡";
-    static String downFrame= "└---┴---┴---╨---┴---┴---╨---┴---┴---┘";
+    static String downFrame= "└───┴───┴───╨───┴───┴───╨───┴───┴───┘";
     static String[][] boardToDisplay = new String[9][9];
 
     public static void displayGameBoard(Field[][] board){
