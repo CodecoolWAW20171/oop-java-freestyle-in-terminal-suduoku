@@ -2,7 +2,6 @@ package com.codecool.termlib;
 import java.util.Arrays;
 
 public class DisplayBoard {
-
     static String upperFrame = "┌───┬───┬───╥───┬───┬───╥───┬───┬───┐";
     static String verticalLine = " │ ";
     static String doubleVerticalLine = " ║ ";
@@ -16,23 +15,22 @@ public class DisplayBoard {
     public static final String GREEN = "\033[0;32m";
     public static final String RESET = "\033[0m";
     public static final String CYAN = "\033[0;36m";
-
+    public static final String BACKGROUND = "\033[43m";
 
     public static void displayGameBoard(Field[][] board){
         String[][] boardToDisplay = new String[9][9];
+        Utils.clearScreen();
         for (int i =0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 boardToDisplay[i][j] = Integer.toString(board[i][j].getUserValue());
                 if (board[i][j].getUserValue() == 0) {
                     boardToDisplay[i][j] = " ";
                 }
-                if (board[i][j].isEditable() == false ){
+                if (!board[i][j].isEditable()){
                     boardToDisplay[i][j] = RED + boardToDisplay[i][j] + RESET; // PREDEFINED FIELD
-                } else if (board[i][j].isSelected() && board[i][j].isEditable() && board[i][j].isVisibility()){
-                    boardToDisplay[i][j] = CYAN + boardToDisplay[i][j] + RESET; // SELECTED FIELD
                 }
-                else if (board[i][j].isSelected() && board[i][j].isEditable() && !board[i][j].isVisibility()){
-                    boardToDisplay[i][j] = CYAN + "█" + RESET; // SELECTED EMPTY FIELD
+                if (board[i][j].isSelected()){
+                    boardToDisplay[i][j] = BACKGROUND + boardToDisplay[i][j] + RESET; // SELECTED FIELD
                 }
             }
         }
