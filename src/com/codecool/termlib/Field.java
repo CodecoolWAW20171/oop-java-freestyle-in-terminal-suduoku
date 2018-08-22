@@ -7,6 +7,15 @@ public class Field {
     private int column;
     private boolean visibility;
     private boolean editable;
+    private boolean isSelected;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
 
     public int getUserValue() {
@@ -64,5 +73,6 @@ public class Field {
         this.column = column;
         this.visibility = visibility;
         this.editable = editable;
+        this.isSelected = false;
     }
 }

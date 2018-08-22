@@ -3,10 +3,13 @@ package com.codecool.termlib;
 import com.codecool.termlib.Field;
 
 public class Game {
-
+    static public boolean gameSubmitted = false;
 
     public static void startGame(Field[][] board){
-        DisplayBoard.displayGameBoard(board);
+        while (!gameSubmitted){
+            DisplayBoard.displayGameBoard(board);
+            gameSubmitted=true;
+        }
     }
 
     public static boolean checkBoard(Field[][] board){
