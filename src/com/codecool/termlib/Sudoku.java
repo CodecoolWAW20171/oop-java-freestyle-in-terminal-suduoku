@@ -27,7 +27,7 @@ public class Sudoku {
 
         Field[][] board;
         board = BoardGenerator.generateBoardOutOfChosenSet(completedBoard, emptyBoard);
-        DisplayBoard.displayGameBoard(board);
+        Game.startGame(board);
 
 //
 //        for (int[] elem : emptyBoard){
