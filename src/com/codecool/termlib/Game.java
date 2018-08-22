@@ -8,6 +8,8 @@ public class Game {
     public static void startGame(Field[][] board){
         while (!gameSubmitted){
             DisplayBoard.displayGameBoard(board);
+            char test = Controls.takeInput();
+            System.out.println(test);
             gameSubmitted=true;
         }
     }

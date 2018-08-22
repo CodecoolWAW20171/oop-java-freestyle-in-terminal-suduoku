@@ -20,7 +20,6 @@ public class DisplayBoard {
 
     public static void displayGameBoard(Field[][] board){
         String[][] boardToDisplay = new String[9][9];
-        board[3][3].setSelected(true);
         for (int i =0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 boardToDisplay[i][j] = Integer.toString(board[i][j].getUserValue());
