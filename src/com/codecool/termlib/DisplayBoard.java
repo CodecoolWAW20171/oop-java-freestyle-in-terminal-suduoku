@@ -7,7 +7,7 @@ public class DisplayBoard {
     static String verticalLine = " │ ";
     static String doubleVerticalLine = " ║ ";
     static String middleFrame = "├───┼───┼───╫───┼───┼───╫───┼───┼───┤";
-    static String boldMiddlaFrame = "╞═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╡";
+    static String boldMiddleFrame = "╞═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╡";
     static String downFrame= "└───┴───┴───╨───┴───┴───╨───┴───┴───┘";
     static String[][] boardToDisplay = new String[9][9];
 
@@ -42,7 +42,7 @@ public class DisplayBoard {
             }
             System.out.println(" ");
             if (i % 3 == 2 && i != 8) {
-                System.out.println(boldMiddlaFrame);
+                System.out.println(boldMiddleFrame);
             } else if ( i == 8) {
                 System.out.println(downFrame);
             } else {
