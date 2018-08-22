@@ -28,24 +28,5 @@ public class Sudoku {
         Field[][] board;
         board = BoardGenerator.generateBoardOutOfChosenSet(completedBoard, emptyBoard);
         Game.startGame(board);
-
-//
-//        for (int[] elem : emptyBoard){
-//            System.out.println(Arrays.toString(elem));
-//        }
-//
-//        System.out.println(" ");
-//
-//        for (int[] elem : completedBoard){
-//            System.out.println(Arrays.toString(elem));
-//        }
-
-        // JSON to 2d array
-        //int[][] intArray2 = gson.fromJson("[[1,2,3],[4,5,6]]", int[][].class);
-
-        // 2d array to JSON
-        //System.out.println(gson.toJson(board));
     }
-
-
 }
