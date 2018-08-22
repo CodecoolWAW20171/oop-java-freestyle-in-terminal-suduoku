@@ -6,12 +6,11 @@ public class Game {
     static public boolean gameSubmitted = false;
 
     public static void startGame(Field[][] board){
+        board[0][0].setSelected(true);
         while (!gameSubmitted){
             DisplayBoard.displayGameBoard(board);
-
-            Controls.makeMove();
+            Controls.makeMove(board);
             Controls.correctInput = false;
-
         }
     }
 
