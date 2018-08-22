@@ -8,10 +8,10 @@ public class Game {
     public static void startGame(Field[][] board){
         while (!gameSubmitted){
             DisplayBoard.displayGameBoard(board);
+
             Controls.makeMove();
-//            System.out.println(test);
             Controls.correctInput = false;
-//            gameSubmitted=true;
+
         }
     }
 

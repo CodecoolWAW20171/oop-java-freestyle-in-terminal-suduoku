@@ -68,6 +68,7 @@ public class Controls {
         }
     }
 
+
     private static void moveUp() {
         if (yPosition > 0) {
             System.out.println("UP");
@@ -103,6 +104,7 @@ public class Controls {
         }
         System.out.println(xPosition);
         System.out.println(yPosition);
+
     }
 
 }
