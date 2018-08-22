@@ -28,7 +28,7 @@ public class DisplayBoard {
         }
 
         System.out.println(upperFrame);
-        for (int i =0; i < 8; i++) {
+        for (int i =0; i < 9; i++) {
             System.out.print("│ ");
             for (int j = 0; j < 9; j++) {
                 if (j % 3 == 2 && j != 8) {
@@ -41,27 +41,13 @@ public class DisplayBoard {
                 }
             }
             System.out.println(" ");
-            if (i % 3 == 2) {
+            if (i % 3 == 2 && i != 8) {
                 System.out.println(boldMiddlaFrame);
+            } else if ( i == 8) {
+                System.out.println(downFrame);
             } else {
                 System.out.println(middleFrame);
             }
         }
-
-        int i = 8;
-        System.out.print("│ ");
-        for (int j = 0; j < 9; j++) {
-            if (j%3 == 2 && j != 8){
-                System.out.print(boardToDisplay[i][j]);
-                System.out.print(doubleVerticalLine);
-
-            } else {
-                System.out.print(boardToDisplay[i][j]);
-                System.out.print(verticalLine);
-            }
-        }
-        System.out.println(" ");
-        System.out.println(downFrame);
-
     }
 }
