@@ -8,16 +8,17 @@ import java.util.Scanner;
 public class Controls {
     public static int xPosition = 0;
     public static int yPosition = 0;
+    public static boolean isNumber = false;
+    public static boolean isWsad = false;
+    public static boolean correctInput = (isNumber || isWsad);
+
 
     public static char takeInput(){
         Scanner scanner = new Scanner(System.in);
         char[] numbers = new char[] {'1','2','3','4','5','6','7','8','9'};
         char[] wsad = new char[] {'w','s','a','d','W','S','A','D'};
-        boolean isNumber = false;
-        boolean isWsad = false;
         char inputChar = 'x';
-        String input = "x";
-        boolean correctInput = (isNumber || isWsad);
+        String input;
         while (!correctInput) {
             input = scanner.nextLine();
             if (input.length() == 1) {
@@ -38,7 +39,72 @@ public class Controls {
         return inputChar;
     }
 
-    public void setUserValue (String input){
-        input = (int) input;
+    public static void makeMove(){
+        char input = takeInput();
+        if (isNumber){
+            setUserValue(input);
+        } else if (isWsad){
+            moveCursor(input);
+        }
     }
+
+
+    public static void setUserValue (char input){
+//        input = input;
+        System.out.println(input);
+    }
+
+    public static void moveCursor(char input) {
+        if (input == 'w' || input == 'W') {
+            System.out.println("UP");
+            moveUp();
+        } else if (input == 's' || input == 'S') {
+            System.out.println("down");
+            moveDown();
+        } else if (input == 'a' || input == 'A') {
+              moveLeft();
+        } else if (input == 'd' || input == 'D') {
+            moveRight();
+        }
+    }
+
+    private static void moveUp() {
+        if (yPosition > 0) {
+            System.out.println("UP");
+            yPosition -= 1;
+        }
+        System.out.println(xPosition);
+        System.out.println(yPosition);
+    }
+
+    private static void moveDown() {
+        if (yPosition < 8) {
+            System.out.println("DOWN");
+            yPosition += 1;
+        }
+        System.out.println(xPosition);
+        System.out.println(yPosition);
+    }
+
+    private static void moveLeft() {
+        if (xPosition > 0) {
+            System.out.println("LEFT");
+
+            xPosition -= 1;
+        }
+        System.out.println(xPosition);
+        System.out.println(yPosition);
+    }
+
+    private static void moveRight() {
+        if (xPosition < 8) {
+            System.out.println("RIGHT");
+            xPosition += 1;
+        }
+        System.out.println(xPosition);
+        System.out.println(yPosition);
+    }
+
 }
+
+

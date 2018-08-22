@@ -2,6 +2,7 @@ package com.codecool.termlib;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Utils {
     public static int getRandomNumber (int range){
@@ -23,4 +24,5 @@ public class Utils {
         int[][] completedyBoard = randomBoardSet[1];
         return completedyBoard;
     }
+
 }
