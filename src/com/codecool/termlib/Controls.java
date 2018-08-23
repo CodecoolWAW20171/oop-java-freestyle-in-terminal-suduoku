@@ -8,12 +8,14 @@ import java.util.Scanner;
 public class Controls {
     public static int xPosition = 0;
     public static int yPosition = 0;
+    public static int previousXPosition = 0;
+    public static int previousYPosition = 0;
     public static boolean isNumber = false;
     public static boolean isWsad = false;
-    public static boolean correctInput = (isNumber || isWsad);
+    public static boolean isCheat = false;
+    public static boolean correctInput = (isNumber || isWsad || isCheat);
 
-
-    public static char takeInput(){
+    public static char takeInput(Field[][] board){
         Scanner scanner = new Scanner(System.in);
         char[] numbers = new char[] {'1','2','3','4','5','6','7','8','9'};
         char[] wsad = new char[] {'w','s','a','d','W','S','A','D'};
@@ -23,7 +25,7 @@ public class Controls {
             input = scanner.nextLine();
             if (input.length() == 1) {
                 inputChar = input.charAt(0);
-                for (int i = 0; i < numbers.length-1; i++){
+                for (int i = 0; i < numbers.length; i++){
                     if (inputChar == numbers[i]){
                         isNumber = true;
                     }
@@ -33,76 +35,85 @@ public class Controls {
                         isWsad = true;
                     }
                 }
+                if (inputChar == 'F'){
+                    isCheat = true;
+                }
             }
-            correctInput = (isNumber || isWsad);
+            correctInput = (isNumber || isWsad || isCheat);
         }
         return inputChar;
     }
 
-    public static void makeMove(){
-        char input = takeInput();
+    public static void makeMove(Field[][] board){
+        char input = takeInput(board);
         if (isNumber){
-            setUserValue(input);
+            setUserValue(input, board);
+            isNumber = false;
         } else if (isWsad){
-            moveCursor(input);
+            moveCursor(input, board);
+            isWsad = false;
+        } else if (isCheat){
+            Utils.discoverBoard(board);
+            isCheat = false;
         }
     }
 
-
-    public static void setUserValue (char input){
-//        input = input;
-        System.out.println(input);
+    public static void setUserValue (char input, Field[][] board){
+        if (board[yPosition][xPosition].isEditable()){
+            int userValue = Character.getNumericValue(input);
+            setUserValue(board, userValue);
+        }
     }
 
-    public static void moveCursor(char input) {
+    public static void moveCursor(char input, Field[][] board) {
         if (input == 'w' || input == 'W') {
-            moveUp();
+            moveUp(board);
         } else if (input == 's' || input == 'S') {
-            moveDown();
+            moveDown(board);
         } else if (input == 'a' || input == 'A') {
-              moveLeft();
+              moveLeft(board);
         } else if (input == 'd' || input == 'D') {
-            moveRight();
+            moveRight(board);
         }
     }
 
-
-    private static void moveUp() {
+    private static void moveUp(Field[][] board) {
         if (yPosition > 0) {
             yPosition -= 1;
+            select(board);
         }
-        System.out.print(xPosition + ", ");
-        System.out.print(yPosition);
-        System.out.println(" ");
     }
 
-    private static void moveDown() {
+    private static void moveDown(Field[][] board) {
         if (yPosition < 8) {
             yPosition += 1;
+            select(board);
         }
-        System.out.print(xPosition + ", ");
-        System.out.print(yPosition);
-        System.out.println(" ");
     }
 
-    private static void moveLeft() {
+    private static void moveLeft(Field[][] board) {
         if (xPosition > 0) {
-
             xPosition -= 1;
+            select(board);
         }
-        System.out.print(xPosition + ", ");
-        System.out.print(yPosition);
-        System.out.println(" ");
     }
 
-    private static void moveRight() {
+    private static void moveRight(Field[][] board) {
         if (xPosition < 8) {
             xPosition += 1;
+            select(board);
         }
-        System.out.print(xPosition + ", ");
-        System.out.print(yPosition);
-        System.out.println(" ");
+    }
 
+    private static void select(Field[][] board) {
+        board[previousYPosition][previousXPosition].setSelected(false);
+        board[yPosition][xPosition].setSelected(true);
+        previousXPosition = xPosition;
+        previousYPosition = yPosition;
+    }
+
+    private static void setUserValue(Field[][] board, int value){
+        board[yPosition][xPosition].setUserValue(value);
     }
 
 }
