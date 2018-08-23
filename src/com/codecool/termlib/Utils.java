@@ -38,6 +38,16 @@ public class Utils {
         }
     }
 
+    public static void resetBoard(Field[][] board) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j].isEditable()) {
+                    board[i][j].setUserValue(0);
+                }
+            }
+        }
+    }
+
     public static void giveAHint(Field[][] board) {
         boolean validHint = true;
         if (hasSpace(board)) {
@@ -60,6 +70,10 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    public static void quit() {
+        System.exit(0);
     }
 }
 
