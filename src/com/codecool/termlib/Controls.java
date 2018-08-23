@@ -12,12 +12,11 @@ public class Controls {
     public static boolean isNumber = false;
     public static boolean isWsad = false;
     public static boolean isCheat = false;
+    public static boolean buttonIsClicked = false;
     public static boolean isMenuActive = false;
     public static boolean correctInput = (isNumber || isWsad || isCheat);
-
     public static String[] buttonNameList = {"Submit", "Hint", "Restart", "Quit"};
     public static Buttons[] buttonList;
-
     public static char takeInput(Field[][] board){
 
         Scanner scanner = new Scanner(System.in);
@@ -42,8 +41,10 @@ public class Controls {
                 if (inputChar == 'F'){
                     isCheat = true;
                 }
+            } else if (input.length() == 0 && isMenuActive){
+                buttonIsClicked = true;
             }
-            correctInput = (isNumber || isWsad || isCheat);
+            correctInput = (isNumber || isWsad || isCheat || buttonIsClicked);
         }
         return inputChar;
     }
@@ -57,8 +58,28 @@ public class Controls {
             moveCursor(input, board, buttonList);
             isWsad = false;
         } else if (isCheat){
-            Utils.discoverBoard(board);
+            Game.discoverBoard(board);
             isCheat = false;
+        } else if (buttonIsClicked){
+            runMethodFromMenu(board);
+            buttonIsClicked = false;
+        }
+    }
+
+    private static void runMethodFromMenu(Field[][] board) {
+        switch (buttonPosition){
+            case 0:
+                Game.checkBoard(board);
+                break;
+            case 1:
+                Game.giveAHint(board);
+                break;
+            case 2:
+                Game.resetBoard(board);
+                break;
+            case 3:
+                Game.quit();
+                break;
         }
     }
 
