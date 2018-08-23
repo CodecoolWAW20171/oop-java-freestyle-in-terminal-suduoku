@@ -31,4 +31,29 @@ public class UI {
         }
         return difficultySettings[index];
     }
+
+
+    public static void youWon() {
+        Utils.clearScreen();
+        String youWon;
+        youWon = "\n" +
+                "                                        \n" +
+                " __ __ _____ _____    _ _ _ _____ _____ \n" +
+                "|  |  |     |  |  |  | | | |     |   | |\n" +
+                "|_   _|  |  |  |  |  | | | |  |  | | | |\n" +
+                "  |_| |_____|_____|  |_____|_____|_|___|\n" +
+                "                                        \n";
+
+        System.out.println(youWon);
+    }
+
+    public static void youLost(Field [][] board){
+        DisplayBoard.displayGameBoard(board);
+        System.out.println(" ");
+        System.out.println("              You lost!");
+        System.out.println("                 T_T");
+        System.out.println(" ");
+
+    }
+
 }

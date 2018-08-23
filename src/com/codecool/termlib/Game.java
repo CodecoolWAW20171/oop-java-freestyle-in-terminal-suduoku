@@ -1,6 +1,14 @@
 package com.codecool.termlib;
 
 public class Game {
+    public static boolean isGameSubmitted() {
+        return gameSubmitted;
+    }
+
+    public static void setGameSubmitted(boolean gameSubmitted) {
+        Game.gameSubmitted = gameSubmitted;
+    }
+
     static public boolean gameSubmitted = false;
 
     public static void startGame(Field[][] board, String[] buttonNameList){
@@ -13,9 +21,14 @@ public class Game {
             Controls.makeMove(board);
             Controls.correctInput = false;
         }
+        if (gameWon(board)){
+            UI.youWon();
+        } else {
+            UI.youLost(board);
+        }
     }
 
-    public static boolean checkBoard(Field[][] board){
+    public static boolean gameWon(Field[][] board){
         boolean gameWon = true;
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
@@ -25,6 +38,7 @@ public class Game {
                 }
             }
         }
+        gameSubmitted = true;
         return gameWon;
     }
 

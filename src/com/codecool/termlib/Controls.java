@@ -69,7 +69,7 @@ public class Controls {
     private static void runMethodFromMenu(Field[][] board) {
         switch (buttonPosition){
             case 0:
-                Game.checkBoard(board);
+                Game.setGameSubmitted(true);
                 break;
             case 1:
                 Game.giveAHint(board);

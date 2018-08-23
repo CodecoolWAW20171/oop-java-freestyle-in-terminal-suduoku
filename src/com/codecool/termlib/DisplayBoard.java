@@ -16,7 +16,9 @@ public class DisplayBoard {
     public static final String CYAN = "\033[0;36m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String BACKGROUND = "\033[43m";
+    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
     public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_WHITE = "\u001B[37m";
 
     public static void displayGameBoard(Field[][] board){
         String[][] boardToDisplay = new String[9][9];
@@ -30,8 +32,14 @@ public class DisplayBoard {
                 if (!board[i][j].isEditable()){
                     boardToDisplay[i][j] = ANSI_BLUE + boardToDisplay[i][j] + RESET; // PREDEFINED FIELD
                 }
-                if (board[i][j].isSelected()){
+                if (board[i][j].isSelected() && Controls.isMenuActive == false){
                     boardToDisplay[i][j] = BACKGROUND + boardToDisplay[i][j] + RESET; // SELECTED FIELD
+                }
+                if (Game.gameSubmitted && board[i][j].getUserValue() != board[i][j].getCorrectValue()){
+                    if (board[i][j].getUserValue() == 0){
+                        boardToDisplay[i][j] = "x";
+                    }
+                    boardToDisplay[i][j] = RED + boardToDisplay[i][j] + RESET;
                 }
             }
         }

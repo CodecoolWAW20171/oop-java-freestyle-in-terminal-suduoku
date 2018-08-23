@@ -6,6 +6,7 @@ import java.util.LinkedList;
 public class Sudoku {
     public static void main (String [] args){
         // display board
+        Utils.clearScreen();
         String difficulty = UI.selectDifficulty();
         System.out.println("Difficulty set to " + difficulty);
         System.out.println(" ");
