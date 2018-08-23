@@ -17,7 +17,6 @@ public class Field {
         isSelected = selected;
     }
 
-
     public int getUserValue() {
         return userValue;
     }

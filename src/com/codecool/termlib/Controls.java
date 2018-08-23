@@ -1,9 +1,5 @@
 package com.codecool.termlib;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Controls {
@@ -25,7 +21,7 @@ public class Controls {
     public static char takeInput(Field[][] board){
 
         Scanner scanner = new Scanner(System.in);
-        char[] numbers = new char[] {'1','2','3','4','5','6','7','8','9'};
+        char[] numbers = new char[] {'0','1','2','3','4','5','6','7','8','9'};
         char[] wsad = new char[] {'w','s','a','d','W','S','A','D'};
         char inputChar = 'x';
         String input;
@@ -126,10 +122,7 @@ public class Controls {
                 select(board);
             }
         } else {
-                System.out.println("1");
-
                 if (buttonPosition < 3) {
-                    System.out.println("s");
                     buttonPosition += 1;
                     selectButton(buttonList);
                 }
@@ -137,7 +130,6 @@ public class Controls {
         }
 
     private static void select(Field[][] board) {
-
         board[previousYPosition][previousXPosition].setSelected(false);
         board[yPosition][xPosition].setSelected(true);
         previousXPosition = xPosition;
@@ -145,10 +137,6 @@ public class Controls {
     }
 
     private static void selectButton(Buttons[] buttonList) {
-
-        System.out.println(previousButtonPosition);
-        System.out.println(buttonPosition);
-
         buttonList[previousButtonPosition].setSelected(false);
         buttonList[buttonPosition].setSelected(true);
         previousButtonPosition = buttonPosition;

@@ -1,6 +1,4 @@
 package com.codecool.termlib;
-import java.sql.SQLOutput;
-import java.util.Arrays;
 
 public class DisplayBoard {
     static String upperFrame = "┌───┬───┬───╥───┬───┬───╥───┬───┬───┐";
@@ -71,7 +69,6 @@ public class DisplayBoard {
         System.out.println(" ");
         System.out.print(verticalLine);
         for (Buttons button : buttonList){
-//            System.out.println(button.isSelected());
             if (button.isSelected() == true){
                 System.out.print(ANSI_YELLOW + button.getName() + RESET);
             } else {
