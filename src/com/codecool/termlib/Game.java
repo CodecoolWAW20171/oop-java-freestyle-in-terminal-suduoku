@@ -5,12 +5,16 @@ import com.codecool.termlib.Field;
 public class Game {
     static public boolean gameSubmitted = false;
 
-    public static void startGame(Field[][] board){
+    public static void startGame(Field[][] board, String[] buttonNameList){
         board[0][0].setSelected(true);
+        Buttons[] buttonList = Controls.createButtons(buttonNameList);
         while (!gameSubmitted){
             DisplayBoard.clearScreen();
             DisplayBoard.displayGameBoard(board);
+            DisplayBoard.displayButtons(buttonList);
             Controls.makeMove(board);
+//            System.out.println(Controls.xPosition);
+//            System.out.println(Controls.yPosition);
             Controls.correctInput = false;
         }
     }

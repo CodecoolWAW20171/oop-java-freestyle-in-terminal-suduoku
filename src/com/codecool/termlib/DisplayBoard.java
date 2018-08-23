@@ -1,4 +1,5 @@
 package com.codecool.termlib;
+import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class DisplayBoard {
@@ -15,6 +16,7 @@ public class DisplayBoard {
     public static final String GREEN = "\033[0;32m";
     public static final String RESET = "\033[0m";
     public static final String CYAN = "\033[0;36m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String BACKGROUND = "\033[43m";
     public static final String ANSI_BLUE = "\u001B[34m";
 
@@ -63,6 +65,22 @@ public class DisplayBoard {
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    public static void displayButtons(Buttons[] buttonList){
+        System.out.println(" ");
+        System.out.print(verticalLine);
+        for (Buttons button : buttonList){
+//            System.out.println(button.isSelected());
+            if (button.isSelected() == true){
+                System.out.print(ANSI_YELLOW + button.getName() + RESET);
+            } else {
+                System.out.print(button.getName());
+            }
+            System.out.print(verticalLine);
+        }
+        System.out.println(" ");
+
     }
 
 }
