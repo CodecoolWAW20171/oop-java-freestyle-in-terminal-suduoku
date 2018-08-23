@@ -8,6 +8,7 @@ public class Game {
     public static void startGame(Field[][] board){
         board[0][0].setSelected(true);
         while (!gameSubmitted){
+            DisplayBoard.clearScreen();
             DisplayBoard.displayGameBoard(board);
             Controls.makeMove(board);
             Controls.correctInput = false;
