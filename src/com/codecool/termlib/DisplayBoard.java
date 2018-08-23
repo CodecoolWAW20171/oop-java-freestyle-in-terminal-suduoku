@@ -15,6 +15,7 @@ public class DisplayBoard {
     public static final String RESET = "\033[0m";
     public static final String CYAN = "\033[0;36m";
     public static final String BACKGROUND = "\033[43m";
+    public static final String ANSI_BLUE = "\u001B[34m";
 
     public static void displayGameBoard(Field[][] board){
         String[][] boardToDisplay = new String[9][9];
@@ -26,7 +27,7 @@ public class DisplayBoard {
                     boardToDisplay[i][j] = " ";
                 }
                 if (!board[i][j].isEditable()){
-                    boardToDisplay[i][j] = RED + boardToDisplay[i][j] + RESET; // PREDEFINED FIELD
+                    boardToDisplay[i][j] = ANSI_BLUE + boardToDisplay[i][j] + RESET; // PREDEFINED FIELD
                 }
                 if (board[i][j].isSelected()){
                     boardToDisplay[i][j] = BACKGROUND + boardToDisplay[i][j] + RESET; // SELECTED FIELD
@@ -57,4 +58,10 @@ public class DisplayBoard {
             }
         }
     }
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
 }

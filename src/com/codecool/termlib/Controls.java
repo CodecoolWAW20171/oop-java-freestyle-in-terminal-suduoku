@@ -22,7 +22,7 @@ public class Controls {
             input = scanner.nextLine();
             if (input.length() == 1) {
                 inputChar = input.charAt(0);
-                for (int i = 0; i < numbers.length-1; i++){
+                for (int i = 0; i < numbers.length; i++){
                     if (inputChar == numbers[i]){
                         isNumber = true;
                     }
