@@ -56,10 +56,8 @@ public class Controls {
 
     public static void moveCursor(char input) {
         if (input == 'w' || input == 'W') {
-            System.out.println("UP");
             moveUp();
         } else if (input == 's' || input == 'S') {
-            System.out.println("down");
             moveDown();
         } else if (input == 'a' || input == 'A') {
               moveLeft();
@@ -71,39 +69,39 @@ public class Controls {
 
     private static void moveUp() {
         if (yPosition > 0) {
-            System.out.println("UP");
             yPosition -= 1;
         }
-        System.out.println(xPosition);
-        System.out.println(yPosition);
+        System.out.print(xPosition + ", ");
+        System.out.print(yPosition);
+        System.out.println(" ");
     }
 
     private static void moveDown() {
         if (yPosition < 8) {
-            System.out.println("DOWN");
             yPosition += 1;
         }
-        System.out.println(xPosition);
-        System.out.println(yPosition);
+        System.out.print(xPosition + ", ");
+        System.out.print(yPosition);
+        System.out.println(" ");
     }
 
     private static void moveLeft() {
         if (xPosition > 0) {
-            System.out.println("LEFT");
 
             xPosition -= 1;
         }
-        System.out.println(xPosition);
-        System.out.println(yPosition);
+        System.out.print(xPosition + ", ");
+        System.out.print(yPosition);
+        System.out.println(" ");
     }
 
     private static void moveRight() {
         if (xPosition < 8) {
-            System.out.println("RIGHT");
             xPosition += 1;
         }
-        System.out.println(xPosition);
-        System.out.println(yPosition);
+        System.out.print(xPosition + ", ");
+        System.out.print(yPosition);
+        System.out.println(" ");
 
     }
 
