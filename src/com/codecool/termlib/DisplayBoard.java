@@ -1,5 +1,4 @@
 package com.codecool.termlib;
-import java.util.Arrays;
 
 public class DisplayBoard {
     static String upperFrame = "┌───┬───┬───╥───┬───┬───╥───┬───┬───┐";

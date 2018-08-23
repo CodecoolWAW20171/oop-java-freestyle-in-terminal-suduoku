@@ -1,20 +1,12 @@
 package com.codecool.termlib;
 
-import com.codecool.termlib.FileReader;
-import com.codecool.termlib.Utils;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 
 public class Sudoku {
     public static void main (String [] args){
         // display board
-
         String difficulty = UI.selectDifficulty();
-
-        // wydruk kontrolny:
         System.out.println("Difficulty set to " + difficulty);
         System.out.println(" ");
 

@@ -1,7 +1,5 @@
 package com.codecool.termlib;
 
-import com.codecool.termlib.Field;
-
 public class Game {
     static public boolean gameSubmitted = false;
 
