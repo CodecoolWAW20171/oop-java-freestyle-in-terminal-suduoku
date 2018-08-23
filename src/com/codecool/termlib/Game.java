@@ -1,5 +1,7 @@
 package com.codecool.termlib;
 
+import java.io.IOException;
+
 public class Game {
     public static boolean isGameSubmitted() {
         return gameSubmitted;
@@ -11,7 +13,7 @@ public class Game {
 
     static public boolean gameSubmitted = false;
 
-    public static void startGame(Field[][] board, String[] buttonNameList){
+    public static void startGame(Field[][] board, String[] buttonNameList) throws IOException {
         board[0][0].setSelected(true);
         Buttons[] buttonList = Controls.createButtons(buttonNameList);
         while (!gameSubmitted){
@@ -22,10 +24,11 @@ public class Game {
             Controls.correctInput = false;
         }
         if (gameWon(board)){
-            UI.youWon();
+            UI.youWon(board);
         } else {
             UI.youLost(board);
         }
+        System.in.read();
     }
 
     public static boolean gameWon(Field[][] board){

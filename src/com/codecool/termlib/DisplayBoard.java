@@ -7,18 +7,13 @@ public class DisplayBoard {
     static String middleFrame = "├───┼───┼───╫───┼───┼───╫───┼───┼───┤";
     static String boldMiddleFrame = "╞═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╡";
     static String downFrame= "└───┴───┴───╨───┴───┴───╨───┴───┴───┘";
-    static String[][] boardToDisplay = new String[9][9];
 
     public static final String RED = "\033[0;31m";
-    public static final String GREEN_BOLD = "\033[1;32m";
     public static final String GREEN = "\033[0;32m";
     public static final String RESET = "\033[0m";
-    public static final String CYAN = "\033[0;36m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String BACKGROUND = "\033[43m";
-    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
     public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_WHITE = "\u001B[37m";
 
     public static void displayGameBoard(Field[][] board){
         String[][] boardToDisplay = new String[9][9];
@@ -40,6 +35,9 @@ public class DisplayBoard {
                         boardToDisplay[i][j] = "x";
                     }
                     boardToDisplay[i][j] = RED + boardToDisplay[i][j] + RESET;
+                }
+                if (Game.gameSubmitted && board[i][j].getUserValue() == board[i][j].getCorrectValue()){
+                    boardToDisplay[i][j] = GREEN + boardToDisplay[i][j] + RESET;
                 }
             }
         }

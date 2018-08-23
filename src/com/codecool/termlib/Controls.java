@@ -43,6 +43,10 @@ public class Controls {
                 }
             } else if (input.length() == 0 && isMenuActive){
                 buttonIsClicked = true;
+            } else {
+                DisplayBoard.clearScreen();
+                DisplayBoard.displayGameBoard(board);
+                DisplayBoard.displayButtons(buttonList);
             }
             correctInput = (isNumber || isWsad || isCheat || buttonIsClicked);
         }

@@ -4,10 +4,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UI {
-
+    public static final String RED = "\033[0;31m";
+    public static final String GREEN = "\033[0;32m";
+    public static final String RESET = "\033[0m";
     public static String selectDifficulty(){
         Scanner scanner = new Scanner(System.in);
         String[] difficultySettings = {"easy","medium","hard"};
+
         int index = 0;
         for (int i = 0; i < difficultySettings.length; i++)
         {
@@ -33,27 +36,16 @@ public class UI {
     }
 
 
-    public static void youWon() {
-        Utils.clearScreen();
-        String youWon;
-        youWon = "\n" +
-                "                                        \n" +
-                " __ __ _____ _____    _ _ _ _____ _____ \n" +
-                "|  |  |     |  |  |  | | | |     |   | |\n" +
-                "|_   _|  |  |  |  |  | | | |  |  | | | |\n" +
-                "  |_| |_____|_____|  |_____|_____|_|___|\n" +
-                "                                        \n";
-
-        System.out.println(youWon);
+    public static void youWon(Field [][] board) {
+        DisplayBoard.displayGameBoard(board);
+        System.out.println(GREEN + "               You won!" + RESET);
+        System.out.println(GREEN + "                  :D" + RESET);
     }
 
     public static void youLost(Field [][] board){
         DisplayBoard.displayGameBoard(board);
-        System.out.println(" ");
-        System.out.println("              You lost!");
-        System.out.println("                 T_T");
-        System.out.println(" ");
-
+        System.out.println(RED + "              You lost!" + RESET);
+        System.out.println(RED + "                 T_T" + RESET);
     }
 
 }

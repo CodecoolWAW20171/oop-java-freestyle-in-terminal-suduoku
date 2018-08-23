@@ -1,10 +1,11 @@
 package com.codecool.termlib;
 
+import java.io.IOException;
 import java.util.LinkedList;
 
 
 public class Sudoku {
-    public static void main (String [] args){
+    public static void main (String [] args) throws IOException {
         // display board
         Utils.clearScreen();
         String difficulty = UI.selectDifficulty();
