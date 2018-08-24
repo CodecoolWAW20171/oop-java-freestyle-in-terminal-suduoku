@@ -2,7 +2,6 @@ package com.codecool.termlib;
 
 class DisplayBoard {
     private static String verticalLine = " │ ";
-
     private static final String RED = "\033[0;31m";
     private static final String GREEN = "\033[0;32m";
     private static final String RESET = "\033[0m";

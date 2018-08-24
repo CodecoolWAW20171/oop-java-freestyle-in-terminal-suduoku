@@ -3,9 +3,6 @@ package com.codecool.termlib;
 class Field {
     private int userValue;
     private int correctValue;
-    private int row;
-    private int column;
-    private boolean visibility;
     private boolean editable;
     private boolean isSelected;
 
@@ -33,12 +30,9 @@ class Field {
         return editable;
     }
 
-    Field(int correctValue, int userValue, int row, int column, boolean visibility, boolean editable) {
+    Field(int correctValue, int userValue, boolean editable) {
         this.userValue = userValue;
         this.correctValue = correctValue;
-        this.row = row;
-        this.column = column;
-        this.visibility = visibility;
         this.editable = editable;
         this.isSelected = false;
     }

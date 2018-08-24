@@ -1,6 +1,7 @@
 package com.codecool.termlib;
 
 import java.util.LinkedList;
+import java.util.List;
 
 class Utils {
 
@@ -9,7 +10,7 @@ class Utils {
         return (int) (Math.random() * range);
     }
 
-    static int[][][] getRandomBoardSet(LinkedList<int[][][]> listOfBoards, int number){
+    static int[][][] getRandomBoardSet(List<int[][][]> listOfBoards, int number){
         return listOfBoards.get(number);
     }
 
