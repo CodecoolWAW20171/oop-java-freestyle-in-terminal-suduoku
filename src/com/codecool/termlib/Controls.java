@@ -174,7 +174,7 @@ class Controls {
     static Buttons[] createButtons(String[] buttonNameList) {
         buttonList = new Buttons[buttonNameList.length];
         for (int i = 0; i < buttonNameList.length; i++) {
-            Buttons button = new Buttons(buttonNameList[i], i);
+            Buttons button = new Buttons(buttonNameList[i]);
             buttonList[i] = button;
         }
         return buttonList;
