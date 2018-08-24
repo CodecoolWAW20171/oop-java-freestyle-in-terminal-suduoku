@@ -7,13 +7,13 @@ public class Game {
         return gameSubmitted;
     }
 
-    public static void setGameSubmitted(boolean gameSubmitted) {
+    static void setGameSubmitted(boolean gameSubmitted) {
         Game.gameSubmitted = gameSubmitted;
     }
 
-    static public boolean gameSubmitted = false;
+    static boolean gameSubmitted = false;
 
-    public static void startGame(Field[][] board, String[] buttonNameList) throws IOException {
+    static void startGame(Field[][] board, String[] buttonNameList) throws IOException {
         board[0][0].setSelected(true);
         Buttons[] buttonList = Controls.createButtons(buttonNameList);
         while (!gameSubmitted){
@@ -31,7 +31,7 @@ public class Game {
         System.in.read();
     }
 
-    public static boolean gameWon(Field[][] board){
+    private static boolean gameWon(Field[][] board){
         boolean gameWon = true;
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
@@ -45,7 +45,7 @@ public class Game {
         return gameWon;
     }
 
-    public static void discoverBoard(Field[][] board) {
+    static void discoverBoard(Field[][] board) {
         for (int i =0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 board[i][j].setUserValue(board[i][j].getCorrectValue());
@@ -53,7 +53,7 @@ public class Game {
         }
     }
 
-    public static void resetBoard(Field[][] board) {
+    static void resetBoard(Field[][] board) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (board[i][j].isEditable()) {
@@ -63,7 +63,7 @@ public class Game {
         }
     }
 
-    public static void giveAHint(Field[][] board) {
+    static void giveAHint(Field[][] board) {
         boolean validHint = true;
         if (hasSpace(board)) {
             do {
@@ -76,7 +76,7 @@ public class Game {
         }
     }
 
-    public static boolean hasSpace(Field[][] board){
+    private static boolean hasSpace(Field[][] board){
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (board[i][j].getUserValue() == 0){
@@ -87,7 +87,7 @@ public class Game {
         return false;
     }
 
-    public static void quit() {
+    static void quit() {
         System.exit(0);
     }
 }

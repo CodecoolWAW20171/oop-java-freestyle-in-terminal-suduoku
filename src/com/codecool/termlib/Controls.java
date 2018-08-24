@@ -2,22 +2,22 @@ package com.codecool.termlib;
 
 import java.util.Scanner;
 
-public class Controls {
-    public static int xPosition = 0;
-    public static int yPosition = 0;
-    public static int previousXPosition = 0;
-    public static int previousYPosition = 0;
-    public static int previousButtonPosition = 0;
-    public static int buttonPosition = 0;
-    public static boolean isNumber = false;
-    public static boolean isWsad = false;
-    public static boolean isCheat = false;
-    public static boolean buttonIsClicked = false;
-    public static boolean isMenuActive = false;
-    public static boolean correctInput = (isNumber || isWsad || isCheat);
-    public static String[] buttonNameList = {"Submit", "Hint", "Restart", "Quit"};
-    public static Buttons[] buttonList;
-    public static char takeInput(Field[][] board){
+class Controls {
+    private static int xPosition = 0;
+    private static int yPosition = 0;
+    private static int previousXPosition = 0;
+    private static int previousYPosition = 0;
+    private static int previousButtonPosition = 0;
+    private static int buttonPosition = 0;
+    private static boolean isNumber = false;
+    private static boolean isWsad = false;
+    private static boolean isCheat = false;
+    private static boolean buttonIsClicked = false;
+    static boolean isMenuActive = false;
+    static boolean correctInput = false;
+    static String[] buttonNameList = {"Submit", "Hint", "Restart", "Quit"};
+    private static Buttons[] buttonList;
+    private static char takeInput(Field[][] board){
 
         Scanner scanner = new Scanner(System.in);
         char[] numbers = new char[] {'0','1','2','3','4','5','6','7','8','9'};
@@ -28,8 +28,8 @@ public class Controls {
             input = scanner.nextLine();
             if (input.length() == 1) {
                 inputChar = input.charAt(0);
-                for (int i = 0; i < numbers.length; i++){
-                    if (inputChar == numbers[i]){
+                for (char number : numbers) {
+                    if (inputChar == number) {
                         isNumber = true;
                     }
                 }
@@ -53,7 +53,7 @@ public class Controls {
         return inputChar;
     }
 
-    public static void makeMove(Field[][] board){
+    static void makeMove(Field[][] board){
         char input = takeInput(board);
         if (isNumber){
             setUserValue(input, board);
@@ -87,14 +87,14 @@ public class Controls {
         }
     }
 
-    public static void setUserValue (char input, Field[][] board){
+    private static void setUserValue(char input, Field[][] board){
         if (board[yPosition][xPosition].isEditable()){
             int userValue = Character.getNumericValue(input);
             setUserValue(board, userValue);
         }
     }
 
-    public static void moveCursor(char input, Field[][] board, Buttons [] buttonList) {
+    private static void moveCursor(char input, Field[][] board, Buttons[] buttonList) {
         if (input == 'w' || input == 'W') {
             moveUp(board);
         } else if (input == 's' || input == 'S') {
@@ -147,7 +147,7 @@ public class Controls {
                 select(board);
             }
         } else {
-                if (buttonPosition < 3) {
+                if (buttonPosition < buttonList.length-1) {
                     buttonPosition += 1;
                     selectButton(buttonList);
                 }
@@ -171,7 +171,7 @@ public class Controls {
         board[yPosition][xPosition].setUserValue(value);
     }
 
-    public static Buttons[] createButtons(String[] buttonNameList) {
+    static Buttons[] createButtons(String[] buttonNameList) {
         buttonList = new Buttons[buttonNameList.length];
         for (int i = 0; i < buttonNameList.length; i++) {
             Buttons button = new Buttons(buttonNameList[i], i);
@@ -180,14 +180,14 @@ public class Controls {
         return buttonList;
     }
 
-    public static void activateMenu(){
+    private static void activateMenu(){
         buttonList[0].setSelected(true);
         isMenuActive = true;
     }
 
-    public static void deactivateMenu(){
-        for (int i=0; i<buttonList.length; i++) {
-            buttonList[i].setSelected(false);
+    private static void deactivateMenu(){
+        for (Buttons button : buttonList) {
+            button.setSelected(false);
             previousButtonPosition = 0;
             buttonPosition = 0;
         }

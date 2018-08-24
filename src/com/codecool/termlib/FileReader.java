@@ -7,9 +7,9 @@ import java.util.Scanner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class FileReader {
-    public static Gson gson = new GsonBuilder().create();
-    public static LinkedList<int[][][]> readFile(String fileName){
+class FileReader {
+    private static Gson gson = new GsonBuilder().create();
+    static LinkedList<int[][][]> readFile(String fileName){
         LinkedList<int[][][]> listOfBoards = new LinkedList<>();
         try{
             File file = new File(fileName);

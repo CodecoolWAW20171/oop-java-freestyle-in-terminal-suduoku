@@ -1,9 +1,9 @@
 package com.codecool.termlib;
 
-public class BoardGenerator {
+class BoardGenerator {
 
-    static Field[][] fields = new Field[9][9];
-    public static Field[][] generateBoardOutOfChosenSet(int[][] completedBoard, int[][] emptyBoard) {
+    private static Field[][] fields = new Field[9][9];
+    static Field[][] generateBoardOutOfChosenSet(int[][] completedBoard, int[][] emptyBoard) {
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
                 boolean visibility;

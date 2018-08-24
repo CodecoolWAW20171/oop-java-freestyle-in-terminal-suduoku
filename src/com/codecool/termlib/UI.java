@@ -3,14 +3,15 @@ package com.codecool.termlib;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class UI {
-    public static final String RED = "\033[0;31m";
-    public static final String GREEN = "\033[0;32m";
-    public static final String RESET = "\033[0m";
-    public static String selectDifficulty(){
+class UI {
+    private static final String RED = "\033[0;31m";
+    private static final String GREEN = "\033[0;32m";
+    private static final String RESET = "\033[0m";
+    static String selectDifficulty(){
         Scanner scanner = new Scanner(System.in);
         String[] difficultySettings = {"easy","medium","hard"};
-
+        System.out.println("SUDOKU");
+        System.out.println();
         int index = 0;
         for (int i = 0; i < difficultySettings.length; i++)
         {
@@ -36,13 +37,13 @@ public class UI {
     }
 
 
-    public static void youWon(Field [][] board) {
+    static void youWon(Field[][] board) {
         DisplayBoard.displayGameBoard(board);
         System.out.println(GREEN + "               You won!" + RESET);
         System.out.println(GREEN + "                  :D" + RESET);
     }
 
-    public static void youLost(Field [][] board){
+    static void youLost(Field[][] board){
         DisplayBoard.displayGameBoard(board);
         System.out.println(RED + "              You lost!" + RESET);
         System.out.println(RED + "                 T_T" + RESET);

@@ -2,30 +2,26 @@ package com.codecool.termlib;
 
 import java.util.LinkedList;
 
-public class Utils {
+class Utils {
 
 
-    public static int getRandomNumber (int range){
-        int number = (int) (Math.random() * range);
-        return number;
+    static int getRandomNumber(int range){
+        return (int) (Math.random() * range);
     }
 
-    public static int[][][] getRandomBoardSet(LinkedList<int[][][]> listOfBoards, int number){
-        int[][][] randomBoardSet = listOfBoards.get(number);
-        return randomBoardSet;
+    static int[][][] getRandomBoardSet(LinkedList<int[][][]> listOfBoards, int number){
+        return listOfBoards.get(number);
     }
 
-    public static int[][] getEmptyBoard(int [][][] randomBoardSet){
-        int[][] emptyBoard = randomBoardSet[0];
-        return emptyBoard;
+    static int[][] getEmptyBoard(int[][][] randomBoardSet){
+        return randomBoardSet[0];
     }
 
-    public static int[][] getCompletedBoard(int [][][] randomBoardSet){
-        int[][] completedyBoard = randomBoardSet[1];
-        return completedyBoard;
+    static int[][] getCompletedBoard(int[][][] randomBoardSet){
+        return randomBoardSet[1];
     }
 
-    public static void clearScreen() {
+    static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }

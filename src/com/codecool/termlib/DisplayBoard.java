@@ -1,21 +1,16 @@
 package com.codecool.termlib;
 
-public class DisplayBoard {
-    static String upperFrame = "┌───┬───┬───╥───┬───┬───╥───┬───┬───┐";
-    static String verticalLine = " │ ";
-    static String doubleVerticalLine = " ║ ";
-    static String middleFrame = "├───┼───┼───╫───┼───┼───╫───┼───┼───┤";
-    static String boldMiddleFrame = "╞═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╡";
-    static String downFrame= "└───┴───┴───╨───┴───┴───╨───┴───┴───┘";
+class DisplayBoard {
+    private static String verticalLine = " │ ";
 
-    public static final String RED = "\033[0;31m";
-    public static final String GREEN = "\033[0;32m";
-    public static final String RESET = "\033[0m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String BACKGROUND = "\033[43m";
-    public static final String ANSI_BLUE = "\u001B[34m";
+    private static final String RED = "\033[0;31m";
+    private static final String GREEN = "\033[0;32m";
+    private static final String RESET = "\033[0m";
+    private static final String ANSI_YELLOW = "\u001B[33m";
+    private static final String BACKGROUND = "\033[43m";
+    private static final String ANSI_BLUE = "\u001B[34m";
 
-    public static void displayGameBoard(Field[][] board){
+    static void displayGameBoard(Field[][] board){
         String[][] boardToDisplay = new String[9][9];
         Utils.clearScreen();
         for (int i =0; i < 9; i++) {
@@ -27,7 +22,7 @@ public class DisplayBoard {
                 if (!board[i][j].isEditable()){
                     boardToDisplay[i][j] = ANSI_BLUE + boardToDisplay[i][j] + RESET; // PREDEFINED FIELD
                 }
-                if (board[i][j].isSelected() && Controls.isMenuActive == false){
+                if (board[i][j].isSelected() && !Controls.isMenuActive){
                     boardToDisplay[i][j] = BACKGROUND + boardToDisplay[i][j] + RESET; // SELECTED FIELD
                 }
                 if (Game.gameSubmitted && board[i][j].getUserValue() != board[i][j].getCorrectValue()){
@@ -42,12 +37,14 @@ public class DisplayBoard {
             }
         }
 
+        String upperFrame = "┌───┬───┬───╥───┬───┬───╥───┬───┬───┐";
         System.out.println(upperFrame);
         for (int i =0; i < 9; i++) {
             System.out.print("│ ");
             for (int j = 0; j < 9; j++) {
                 if (j % 3 == 2 && j != 8) {
                     System.out.print(boardToDisplay[i][j]);
+                    String doubleVerticalLine = " ║ ";
                     System.out.print(doubleVerticalLine);
 
                 } else {
@@ -57,25 +54,28 @@ public class DisplayBoard {
             }
             System.out.println(" ");
             if (i % 3 == 2 && i != 8) {
+                String boldMiddleFrame = "╞═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╡";
                 System.out.println(boldMiddleFrame);
             } else if ( i == 8) {
+                String downFrame = "└───┴───┴───╨───┴───┴───╨───┴───┴───┘";
                 System.out.println(downFrame);
             } else {
+                String middleFrame = "├───┼───┼───╫───┼───┼───╫───┼───┼───┤";
                 System.out.println(middleFrame);
             }
         }
     }
 
-    public static void clearScreen() {
+    static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
-    public static void displayButtons(Buttons[] buttonList){
+    static void displayButtons(Buttons[] buttonList){
         System.out.println(" ");
         System.out.print(verticalLine);
         for (Buttons button : buttonList){
-            if (button.isSelected() == true){
+            if (button.isSelected()){
                 System.out.print(ANSI_YELLOW + button.getName() + RESET);
             } else {
                 System.out.print(button.getName());
